@@ -8,10 +8,14 @@ body {
       "YTLC" 500;
   }
   
+h1{
+  text-align: center;
+  color:blue;
   
+}  
   
 
-H2 {
+h2 {
   text-align:center;
   padding-top: 10px;
   padding-bottom: 10px;
