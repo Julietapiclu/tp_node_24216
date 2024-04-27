@@ -41,6 +41,15 @@ li {
   background: #fdc270!important;
 }
 
+h1 {
+  background: #fdc270!important;
+  color: unset;
+  margin: 0;
+  padding: 0;
+
+}
+
+
 .nav-link:hover {
  color: #10bbbc!important;
 }
