@@ -83,12 +83,12 @@
   </section>
 
   <!-- 
-    - # END IFRAME UBICACION
-  -->
+      - # END IFRAME UBICACION
+    -->
 
   <!-- 
-        - #CONTACTO
-      -->
+          - #CONTACTO
+        -->
 
   <section>
     <h2 class="h2 section-title">
@@ -124,63 +124,67 @@
         </div>
 
         <div class="col-lg-7 contact-form__wrapper p-5 order-lg-1">
-          <form action="#" class="contact-form form-validate" novalidate="novalidate">
+          <div action="#" class="contact-form form-validate" novalidate="novalidate">
+            <p class="text-center">* Campos obligatorios</p><br>
             <div class="row">
               <div class="col-sm-6 mb-3">
                 <div class="form-group">
-                  <label class="required-field" for="nombre">Nombre</label>
+                  <label class="required-field" for="nombre">* Nombre</label>
                   <input type="text" class="form-control" id="nombre" name="nombre" required />
                 </div>
               </div>
 
               <div class="col-sm-6 mb-3">
                 <div class="form-group">
-                  <label for="apellido">Apellido</label>
+                  <label for="apellido">* Apellido</label>
                   <input type="text" class="form-control" id="apellido" name="apellido" required />
                 </div>
               </div>
+            </div>
 
+            <div class="row">
               <div class="col-sm-6 mb-3">
                 <div class="form-group">
-                  <label class="required-field" for="email">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" required />
+                  <label class="required-field" for="email">* Email</label>
+                  <input type="email" class="form-control" id="email" name="email" required />
                 </div>
               </div>
 
               <div class="col-sm-6 mb-3">
                 <div class="form-group">
-                  <label for="phone">Telefono</label>
+                  <label for="telefono">* Teléfono</label>
                   <input type="tel" class="form-control" id="telefono" name="telefono" required />
                 </div>
               </div>
+            </div>
 
-              <div class="col-sm-12 mb-3">
-                <div class="form-group">
-                  <label class="required-field" for="message">Cómo podemos ayudarte?</label>
-                  <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                </div>
+            <div class="col-sm-12 mb-3">
+              <div class="form-group">
+                <label class="required-field" for="message">* Cómo podemos ayudarte?</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
               </div>
 
-              <div class="col-sm-12 mb-3">
+              <div class="col-sm-12 mb-3 text-center button-container">
                 <button type="submit" name="submit" class="btn btn-primary">
                   Enviar
                 </button>
-                <div>
-                  <p>Por un paseo <a href="tus_paseadores.html">Click aquí</a></p>
-                </div>
+                <button type="reset" name="reset" class="btn btn-secondary">
+                  Borrar
+                </button>
               </div>
+
             </div>
-          </form>
+              <p>Por un paseo <a href="tus_paseadores.html">Click aquí</a></p>
+            </div>
         </div>
       </section>
     </section>
   </section>
   <!-- End Contact Form -->
 
-
   <!-- 
-    - #FOOTER
-  -->
+      - #FOOTER
+    -->
   <footer class="text-center text-lg-start bg-body-tertiary text-muted">
 
     <!-- Section: Links  -->
@@ -233,7 +237,6 @@
           </div>
           <!-- Grid column -->
 
-
         </div>
         <!-- Grid row -->
       </div>
@@ -255,8 +258,8 @@
             </a>
 
             <!-- Google -->
-            <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-body m-1"
-              href="https://www.google.com/" target="_blank" role="button" data-mdb-ripple-color="dark">
+            <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-body m-1" href="https://www.google.com/"
+              target="_blank" role="button" data-mdb-ripple-color="dark">
               <i class="fab fa-google"></i>
             </a>
 
@@ -271,8 +274,7 @@
               href="https://www.linkedin.com/" target="_blank" role="button" data-mdb-ripple-color="dark">
               <i class="fab fa-linkedin"></i>
             </a>
-
-            <!-- Github -->
+         <!-- Github -->
             <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-body m-1" href="https://github.com/"
               target="_blank" role="button" data-mdb-ripple-color="dark">
               <i class="fab fa-github"></i>
@@ -291,6 +293,8 @@
   <!-- 
       - #END FOOTER
     -->
+  <script src="JS/alerta.js"></script>
+
 </body>
 
 </html>

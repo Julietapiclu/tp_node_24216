@@ -1,36 +1,34 @@
 body {
-    font-family: "Nunito Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600!important;
-    font-style: normal;
-    font-variation-settings:
-      "wdth" 100,
-      "YTLC" 500;
-  }
-  
-h1{
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600 !important;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+}
+
+h1 {
   text-align: center;
-  color:blue;
-  
-}  
-  
+}
+
 
 h2 {
-  text-align:center;
+  text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-h2 > span {
-  color: #10bbbc!important;
+h2>span {
+  color: #10bbbc !important;
 }
 
 h3 {
-  font-size:  1.3rem !important;
+  font-size: 1.3rem !important;
 }
 
 li {
-  list-style:none;
+  list-style: none;
 }
 
 
@@ -38,11 +36,11 @@ li {
   #NADBAR
 \*-----------------------------------*/
 .bg-body-tertiary {
-  background: #fdc270!important;
+  background: #fdc270 !important;
 }
 
 h1 {
-  background: #fdc270!important;
+  background: #fdc270 !important;
   color: unset;
   margin: 0;
   padding: 0;
@@ -51,25 +49,34 @@ h1 {
 
 
 .nav-link:hover {
- color: #10bbbc!important;
+  color: #10bbbc !important;
 }
 
 .navbar-brand {
-  animation: spin 10s linear infinite; /* Inicia la animación de giro, dos vueltas en 4 segundos */
+  animation: spin 10s linear infinite;
+  /* Inicia la animación de giro, dos vueltas en 4 segundos */
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); } /* Inicia la rotación desde 0 grados */
-  100% { transform: rotate(720deg); } /* Completa la rotación volviendo a 720 grados (dos vueltas) */
+  0% {
+    transform: rotate(0deg);
+  }
+
+  /* Inicia la rotación desde 0 grados */
+  100% {
+    transform: rotate(720deg);
+  }
+
+  /* Completa la rotación volviendo a 720 grados (dos vueltas) */
 }
 
 .nav-link {
- font-size: 1.2em;
+  font-size: 1.2em;
 }
 
-.buscadorInput{
-height: 35px;
-border-radius: 10px;
+.buscadorInput {
+  height: 35px;
+  border-radius: 10px;
 }
 
 .btn-outline-success {
@@ -97,12 +104,13 @@ border-radius: 10px;
 iframe {
   width: 100%;
 }
+
 /*-----------------------------------*\
   #CATEGORY
 \*-----------------------------------*/
 .card-body {
- text-align: center;
- padding: 5px;
+  text-align: center;
+  padding: 5px;
 }
 
 
@@ -114,13 +122,13 @@ iframe {
  * responsive for large than 575px screen
  */
 
- @media (min-width: 575px) {
+@media (min-width: 575px) {
   .col-lg-3 {
     width: 50%;
   }
- }
+}
 
- /**
+/**
  * responsive for large than 768px screen
  */
 
@@ -134,15 +142,16 @@ iframe {
 
 @media (min-width: 992px) {
   .col-lg-3 {
-width: 20%;
+    width: 20%;
   }
 }
+
 /*-----------------------------------*\
   #PASEADORES TABLE
 \*-----------------------------------*/
 
 .tabla-imagen {
-  width:10em;
+  width: 10em;
 }
 
 .tabla-imagen:hover {
@@ -157,7 +166,7 @@ width: 20%;
   display: grid;
 }
 
-.prod{
+.prod {
   margin-bottom: 20px;
   font-size: 1.3rem;
 }
@@ -168,9 +177,13 @@ width: 20%;
 
 
 .product .img-cover.hover,
-.product-card .card-action-btn { display: none; }
+.product-card .card-action-btn {
+  display: none;
+}
 
-.product-card { text-align: center; }
+.product-card {
+  text-align: center;
+}
 
 .product-card .card-banner {
   border: 1px solid #e8e8e8;
@@ -178,12 +191,14 @@ width: 20%;
   margin-block-end: 20px;
 
   box-shadow:
-  inset 0 -3em 3em rgba(255, 255, 255, 0.3),
-  0 0 0 2px white,
-  0.3em 0.3em 1em rgba(121, 250, 132, 0.6);
+    inset 0 -3em 3em rgba(255, 255, 255, 0.3),
+    0 0 0 2px white,
+    0.3em 0.3em 1em rgba(121, 250, 132, 0.6);
 }
 
-.product-card :is(.wrapper, .rating-wrapper) { display: flex; }
+.product-card :is(.wrapper, .rating-wrapper) {
+  display: flex;
+}
 
 .product-card .wrapper {
   justify-content: center;
@@ -196,15 +211,21 @@ width: 20%;
   gap: 2px;
 }
 
-.product-card .rating-wrapper.gray { color: unset; }
+.product-card .rating-wrapper.gray {
+  color: unset;
+}
 
 .product-card .h3 {
   margin-block: 8px 10px;
 }
 
-.product-card .card-title { transition: #10bbbc; }
+.product-card .card-title {
+  transition: #10bbbc;
+}
 
-.product-card .card-title:is(:hover, :focus) { color: #10bbbc; }
+.product-card .card-title:is(:hover, :focus) {
+  color: #10bbbc;
+}
 
 .product-card .card-price {
   color: #fbb24d;
@@ -215,11 +236,22 @@ width: 20%;
   #PASEADORES
 \*-----------------------------------*/
 
-.table{
+.table {
   text-align: center;
 }
 
-.form-paseadores{
+.form-paseadores {
+  padding-top: 20px;
+  background-image: -webkit-linear-gradient(0deg, #d3ffc5 0%, #e0f7d7 100%);
+  background-image: -ms-linear-gradient(0deg, #d3ffc5 0%, #e0f7d7 100%);
+
+}
+
+/*-----------------------------------*\
+  #CONTACTO
+\*-----------------------------------*/
+.form-group {
+  text-align: center;
   padding-top: 20px;
   background-image: -webkit-linear-gradient(0deg, #d3ffc5 0%, #e0f7d7 100%);
   background-image: -ms-linear-gradient(0deg, #d3ffc5 0%, #e0f7d7 100%);
@@ -227,16 +259,12 @@ width: 20%;
 }
 
 
-/*-----------------------------------*\
-  #CONTACTO
-\*-----------------------------------*/
-
-
 .gradient-brand-color {
   background-image: -webkit-linear-gradient(0deg, #8aafe7 0%, #add1fa 100%);
   background-image: -ms-linear-gradient(0deg, #8aafe7 0%, #add1fa 100%);
   color: #fff;
 }
+
 .contact-info__wrapper {
   overflow: hidden;
   border-radius: .625rem .625rem 0 0
@@ -244,19 +272,23 @@ width: 20%;
 
 @media (min-width: 1024px) {
   .contact-info__wrapper {
-      border-radius: 0 .625rem .625rem 0;
-      padding: 5rem !important
+    border-radius: 0 .625rem .625rem 0;
+    padding: 5rem !important
   }
 }
+
 .contact-info__list span.position-absolute {
   left: 0
 }
+
 .z-index-101 {
   z-index: 101;
 }
+
 .list-style--none {
   list-style: none;
 }
+
 .contact__wrapper {
   background-color: #fff;
   border-radius: 0 0 .625rem .625rem
@@ -264,16 +296,19 @@ width: 20%;
 
 @media (min-width: 1024px) {
   .contact__wrapper {
-      border-radius: .625rem 0 .625rem .625rem
+    border-radius: .625rem 0 .625rem .625rem
   }
 }
+
 @media (min-width: 1024px) {
   .contact-form__wrapper {
-      padding: 5rem !important
+    padding: 5rem !important
   }
 }
-.shadow-lg, .shadow-lg--on-hover:hover {
-  box-shadow: 0 1rem 3rem rgba(132,138,163,0.1) !important;
+
+.shadow-lg,
+.shadow-lg--on-hover:hover {
+  box-shadow: 0 1rem 3rem rgba(132, 138, 163, 0.1) !important;
 }
 
 
@@ -281,13 +316,60 @@ width: 20%;
   color: #ffffff;
   background-color: #10bbbc;
   border: solid #10bbbc 1px;
-  }
-  
-  .btn-primary:hover {
-    color: #ffffff;
-    background-color: #118b8b;
-    border: solid #10bbbc 1px;
-  }
+}
+
+
+.btn-primary:hover {
+  color: #ffffff;
+  /* Cambia el color de fondo al pasar el mouse */
+  background-color: #45a049; /* Verde un poco más oscuro */
+  border: solid #10bbbc 1px;
+  /* Añade una sombra más fuerte */
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.4);
+}
+
+.btn-secondary {
+  color: #ffffff;
+  background-color: #10bbbc;
+  border: solid #10bbbc 1px;
+}
+
+/* Estilo para el botón cuando se pone el cursor encima */
+.btn-secondary:hover {
+  /* Cambia el color de fondo al pasar el mouse */
+  background-color: #45a049; /* Verde un poco más oscuro */
+
+  /* Añade una sombra más fuerte */
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.4);
+}
+
+.contact-form__wrapper form {
+  background-color:#f5f5f5; /* Cambia #f5f5f5 por el color que desees */
+  padding: 20px; /* Puedes ajustar el padding según tus preferencias */
+  border-radius: 10px; /* Puedes ajustar el radio de las esquinas */
+}
+
+/* Estilo para los campos de entrada */
+.form-control {
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px; /* Espacio interior */
+  border: 1px solid #ccc; /* Color de borde */
+}
+
+/* Estilo para los labels */
+.form-group label {
+  font-weight: bold; /* Negrita */
+  margin-bottom: 5px;
+}
+
+/* Estilo para los campos de nombre, apellido, teléfono y e-mail */
+.row {
+  margin-bottom: 15px; /* Espacio entre filas */
+}
+/* Añadir margen superior a los botones */
+.button-container {
+  margin-top: 20px; /* Puedes ajustar el valor según tus necesidades */
+}
 
 
 /*-----------------------------------*\
@@ -299,18 +381,18 @@ footer {
 }
 
 .text-reset {
-  text-decoration: none!important;
+  text-decoration: none !important;
 }
 
 .text-reset:hover {
-  color: #10bbbc!important;
+  color: #10bbbc !important;
 }
 
 .fab:hover {
- color: #10bbbc;
+  color: #10bbbc;
 }
 
 a[href^="mailto:"] {
   color: unset;
-  text-decoration: none; 
+  text-decoration: none;
 }
