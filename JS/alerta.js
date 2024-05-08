@@ -6,3 +6,5 @@ function mostrarAlerta() {
 
 // Llama a la función para mostrar la alerta
 mostrarAlerta();
+
+
