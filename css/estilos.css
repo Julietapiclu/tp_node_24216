@@ -54,7 +54,7 @@ h1 {
 }
 
 .navbar-brand {
-  animation: spin 10s linear infinite; /* Inicia la animación de giro, dos vueltas en 4 segundos */
+  animation: spin 10s linear; /* Inicia la animación de giro, dos vueltas en 4 segundos */
 }
 
 @keyframes spin {
