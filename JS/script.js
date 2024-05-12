@@ -1,47 +1,133 @@
-/* Función para validar los campos obligatorios antes de enviar el formulario */
+/* Función para validar los campos obligatorios antes de enviar los 2 formularios */
 
-function validarCamposObligatorios() {
-    
-    var nombre = document.getElementById('nombre').value.trim();
-    var apellido = document.getElementById('apellido').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var telefono = document.getElementById('telefono').value.trim();
-    var mensaje = document.getElementById('message').value.trim();
-    
-    // Verificar si los campos obligatorios están llenos
-    if (nombre === '' || apellido === '' || email === '' || telefono === '' || mensaje === '') {
-        alert('Por favor, completar todos los campos obligatorios.');
-        return false;
-    }
-    
-    return true;
-}
 
-/* Obtener el formulario */
-var formulario = document.querySelector('.contact-form');
+const mensajeAlerta = "Por favor, completar todos los campos obligatorios"
+const confirmaMsg = "Se borraran todos los campos"
 
-/*  Escucha el evento 'submit', si se produce, ejecuta la funcion que llama a validar campos */
-
-formulario.addEventListener('submit', function(evento) {
-
-    if (!validarCamposObligatorios()) {
-        // Prevenir el envío del formulario si la validación falla
-        evento.preventDefault();
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  const form1 = document.querySelector(".contact-form")
+  
+  form1.addEventListener("submit", validar);
+  form1.addEventListener("reset", confirmar)
 });
 
 
+/* --------boton borrar----*/
+const confirmar = (evento) => {
+  const confirma = confirm(confirmaMsg);
+  if (!confirma) {
+    evento.preventDefault();
+    return;
+  } 
+}
 
-/*  Escucha evento boton borrar */
 
-var confirmacion = () => confirm("¿deseas borrar todo el formulario?");
+/*-----------------VALIDACIONES DE CAMPOS INPUT EN FORMULARIO CONTACTO----------------------- */
 
-formulario.addEventListener('reset', function(evento) {
+const validarNombre = () => {
+  let elemento = document.getElementById("nombre").value.trim();
+  
+  if (elemento.length ==0) {
+    /*alert(`el campo ${form1.name} no puede estar vacío`);*/
+    alert("el campo Nombre no puede estar vacío")
+    return false;
+  }return true;
+}
 
-    if (!confirmacion()) {
-        // Si el usuario canceló, prevenimos el comportamiento por defecto del evento
-        evento.preventDefault();
-    } 
-    });
+const validarApellido = () => {
+  let elemento = document.getElementById("apellido").value.trim();
+  if (elemento.length ==0) {
+    alert("el campo Apellido no puede estar vacío");
+    return false;
+  }return true;
+}
 
+const validarEmail = () => {
+  let elemento = document.getElementById("email").value.trim();
+  let validarEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+  if( validarEmail.test(elemento) ){
+    return true;
+  } else{
+    alert("Email invalido, corregir");
+    return false;
+  } 
+}
+
+const validarTelefono = () => {
+  let elemento = document.getElementById("telefono").value.trim();
+  if (isNaN(elemento)) {
+    alert("ingrese solo numeros")
+    return false;
+  }return true;
+}
+
+const validarMensaje = () => {
+  const elemento = document.getElementById("message").value.trim();
+  if (elemento.length ==0) {
+    alert("el campo no puede estar vacío");
+    return false;
+  }return true;
+}
+
+const validar = (evento) =>{
+  if (validarNombre() && validarApellido() && validarEmail()
+      && validarTelefono() && validarMensaje() && confirm("Pusa aceptar para enviar el formulario")) {
+        return true;
+    } else {
+      evento.preventDefault();
+      return false;
+    }
+}
+
+
+
+/*-----------------VALIDACIONES DE CAMPOS INPUT EN FORMULARIO PASEADORES----------------------- */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form2 = document.querySelector("#solicitar-paseo-form")
+  form2.addEventListener("submit", validarFormPaseadores);
+  form2.addEventListener("reset", confirmar)
+});
+
+
+var clave = document.getElementById("clave").value.trim();
+var cliente = document.getElementById("nombre_cliente").value.trim();
+var mascota = document.getElementById("nombre_mascota").value.trim();
+
+
+const validarClave = () => {
+  let elemento = document.getElementById("clave").value.trim();
+  
+  if (elemento.length ==0) {
+    alert("el campo Clave no puede estar vacío")
+    return false;
+  }return true;
+}
+
+const validarNombreCliente = () => {
+  let elemento = document.getElementById("nombre_cliente").value.trim();
+  if (elemento.length ==0) {
+    alert("el campo Nombre del Cliente no puede estar vacío");
+    return false;
+  }return true;
+}
+
+const validarNombreMascota = () => {
+  let elemento = document.getElementById("nombre_mascota").value.trim();
+  if (elemento.length ==0) {
+    alert("el campo Nombre de la Mascota no puede estar vacío");
+    return false;
+  }return true;
+   
+}
+
+const validarFormPaseadores = (evento) =>{
+  if (validarClave() && validarNombreCliente() && validarNombreMascota()
+      && confirm("Pusa aceptar para enviar el formulario")) {
+        return true;
+    } else {
+      evento.preventDefault();
+      return false;
+    }
+}
 
