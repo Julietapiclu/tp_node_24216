@@ -62,7 +62,7 @@ const validarTelefono = () => {
 }
 
 const validarMensaje = () => {
-  const elemento = document.getElementById("message").value.trim();
+  let elemento = document.getElementById("message").value.trim();
   if (elemento.length ==0) {
     alert("el campo no puede estar vacío");
     return false;
@@ -90,10 +90,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-var clave = document.getElementById("clave").value.trim();
+/* var clave = document.getElementById("clave").value.trim();
 var cliente = document.getElementById("nombre_cliente").value.trim();
 var mascota = document.getElementById("nombre_mascota").value.trim();
-
+ */
 
 const validarClave = () => {
   let elemento = document.getElementById("clave").value.trim();
@@ -130,4 +130,83 @@ const validarFormPaseadores = (evento) =>{
       return false;
     }
 }
+
+
+
+
+/*-----------------VALIDACIONES DE CAMPOS INPUT EN FORMULARIO REGISTRO ------------- */
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form3 = document.querySelector("#formRegistro")
+  form3.addEventListener("submit", validarFormRegistro);
+  //form3.addEventListener("reset", confirmar)
+});
+
+
+
+const validarusuarioEmail = () => {
+  let elemento = document.querySelector("#usuarioEmail").value.trim();
+  let validarEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+  if( validarEmail.test(elemento) ){
+    return true;
+  } else{
+    alert("Email invalido, corregir");
+    return false;
+  } 
+}
+
+const validarNombreRegistro = () => {
+  let elemento = document.querySelector("#nombreRegistro").value.trim();
+  console.log(elemento);
+  if (elemento.length ==0) {
+    alert("el campo Nombre no puede estar vacío");
+    return false;
+  }return true;
+}
+
+
+const validarApellidoRegistro = () => {
+  let elemento = document.querySelector("#apellidoRegistro").value.trim();
+  if (elemento.length ==0) {
+    alert("el campo Apellido no puede estar vacío");
+    return false;
+  }return true;
+}
+
+
+const validarTelefonoRegistro = () => {
+  let elemento = document.querySelector("#telefonoRegistro").value.trim();
+  if (isNaN(elemento)) {
+    alert("ingrese solo numeros")
+    return false;
+  }return true;
+}
+
+const validarPasswordRegistro = () => {
+  let password = document.querySelector("#passwordRegistro").value.trim();
+  let confirmPassword = document.querySelector("#confirmPpasswordRegistro").value.trim();
+  if (password.length ==0 || confirmPassword ==0) {
+    alert("el campo no puede estar vacío");
+    return false;
+   } else if (password !== confirmPassword) {
+    alert("los password deben ser iguales");
+    return false;
+   } else {
+    return true;
+   }
+  }
+
+
+
+const validarFormRegistro = (evento) => {
+  if (validarusuarioEmail() && validarNombreRegistro() && validarApellidoRegistro()
+      && validarTelefonoRegistro() && validarPasswordRegistro() && confirm("Pulsa aceptar para enviar el formulario")) {
+        return true;
+    } else {
+      evento.preventDefault();
+      return false;
+    }
+}
+
 
