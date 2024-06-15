@@ -1,14 +1,22 @@
-/* Función para validar los campos obligatorios antes de enviar los 2 formularios */
-
-
 const mensajeAlerta = "Por favor, completar todos los campos obligatorios"
 const confirmaMsg = "Se borraran todos los campos"
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form1 = document.querySelector(".contact-form")
-  
-  form1.addEventListener("submit", validar);
-  form1.addEventListener("reset", confirmar)
+  const formContacto = document.querySelector("#contact-form")
+  formContacto.addEventListener("submit", validarFormContacto);
+  formContacto.addEventListener("reset", confirmar)
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const formPaseadores = document.querySelector("#solicitar-paseo-form")
+  formPaseadores.addEventListener("submit", validarFormPaseadores);
+  formPaseadores.addEventListener("reset", confirmar)
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const formRegistro = document.querySelector("#registro-form")
+  formRegistro.addEventListener("submit", validarFormRegistro);
+  formRegistro.addEventListener("reset", confirmar)
 });
 
 
@@ -28,7 +36,6 @@ const validarNombre = () => {
   let elemento = document.getElementById("nombre").value.trim();
   
   if (elemento.length ==0) {
-    /*alert(`el campo ${form1.name} no puede estar vacío`);*/
     alert("el campo Nombre no puede estar vacío")
     return false;
   }return true;
@@ -69,7 +76,7 @@ const validarMensaje = () => {
   }return true;
 }
 
-const validar = (evento) =>{
+const validarFormContacto = (evento) =>{
   if (validarNombre() && validarApellido() && validarEmail()
       && validarTelefono() && validarMensaje() && confirm("Pusa aceptar para enviar el formulario")) {
         return true;
@@ -82,18 +89,6 @@ const validar = (evento) =>{
 
 
 /*-----------------VALIDACIONES DE CAMPOS INPUT EN FORMULARIO PASEADORES----------------------- */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const form2 = document.querySelector("#solicitar-paseo-form")
-  form2.addEventListener("submit", validarFormPaseadores);
-  form2.addEventListener("reset", confirmar)
-});
-
-
-/* var clave = document.getElementById("clave").value.trim();
-var cliente = document.getElementById("nombre_cliente").value.trim();
-var mascota = document.getElementById("nombre_mascota").value.trim();
- */
 
 const validarClave = () => {
   let elemento = document.getElementById("clave").value.trim();
@@ -122,8 +117,7 @@ const validarNombreMascota = () => {
 }
 
 const validarFormPaseadores = (evento) =>{
-  if (validarClave() && validarNombreCliente() && validarNombreMascota()
-      && confirm("Pusa aceptar para enviar el formulario")) {
+  if (validarClave() && validarNombreCliente() && validarNombreMascota()) {
         return true;
     } else {
       evento.preventDefault();
@@ -135,15 +129,6 @@ const validarFormPaseadores = (evento) =>{
 
 
 /*-----------------VALIDACIONES DE CAMPOS INPUT EN FORMULARIO REGISTRO ------------- */
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const form3 = document.querySelector("#formRegistro")
-  form3.addEventListener("submit", validarFormRegistro);
-  //form3.addEventListener("reset", confirmar)
-});
-
-
 
 const validarusuarioEmail = () => {
   let elemento = document.querySelector("#usuarioEmail").value.trim();
@@ -158,7 +143,7 @@ const validarusuarioEmail = () => {
 
 const validarNombreRegistro = () => {
   let elemento = document.querySelector("#nombreRegistro").value.trim();
-  console.log(elemento);
+  //console.log(elemento);
   if (elemento.length ==0) {
     alert("el campo Nombre no puede estar vacío");
     return false;
@@ -198,10 +183,9 @@ const validarPasswordRegistro = () => {
   }
 
 
-
 const validarFormRegistro = (evento) => {
   if (validarusuarioEmail() && validarNombreRegistro() && validarApellidoRegistro()
-      && validarTelefonoRegistro() && validarPasswordRegistro() && confirm("Pulsa aceptar para enviar el formulario")) {
+      && validarTelefonoRegistro() && validarPasswordRegistro()) {
         return true;
     } else {
       evento.preventDefault();
@@ -210,3 +194,69 @@ const validarFormRegistro = (evento) => {
 }
 
 
+/*-----------------------ENVIO FORMULARIO REGISTRO -------------------------------*/
+
+  
+formRegistro.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (validarFormRegistro()) {
+    confirm("Pulsa aceptar para enviar el formulario");
+    enviarFormularioRegistro();
+    }
+  });
+
+const enviarFormularioRegistro = () => {
+  const datos = new FormData(formRegistro);
+  console.log(datos);
+  fetch("http://localhost:3000/registro-form", {
+    method: "POST",
+    body: datos
+  })
+  .then(respuesta => respuesta.json())
+  .then(respuesta => {
+  }).catch(error => console.log("error", error));
+};
+
+/*-----------------------ENVIO FORMULARIO PASEADORES -------------------------------*/
+
+ 
+formPaseadores.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (validarFormPaseadores()) {
+    confirm("Pulsa aceptar para enviar el formulario");
+    enviarFormularioPaseadores();
+    }
+  });
+
+const enviarFormularioPaseadores = () => {
+  const datos = new FormData(formPaseadores);
+  fetch("http://localhost:3000/procesar_solicitud", {
+    method: "POST",
+    body: datos
+  })
+  .then(respuesta => respuesta.json())
+  .then(respuesta => {
+  }).catch(error => console.log("error", error));
+};
+
+/*-----------------------ENVIO FORMULARIO CONTACTO -------------------------------*/
+
+ 
+formContacto.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (validarFormContacto()) {
+    confirm("Pulsa aceptar para enviar el formulario");
+    enviarFormularioContacto();
+    }
+  });
+
+const enviarFormularioContacto = () => {
+  const datos = new FormData(formContacto);
+  fetch("http://localhost:3000/contacto-form", {
+    method: "POST",
+    body: datos
+  })
+  .then(respuesta => respuesta.json())
+  .then(respuesta => {
+  }).catch(error => console.log("error", error));
+};
