@@ -70,16 +70,16 @@
         - # END HEADER NAV
       -->
       <div class="signupFrm">
-        <form action="" class="form">
+        <form id="login-form" action="http://localhost:3000/login-form" class="form" method="post">
           <h2 class="titleRegistro">Log in</h2>
     
           <div class="inputContainer">
-            <input type="text" class="input" name="loginUsuario" placeholder="a">
+            <input type="text" class="input" id="loginUsuario" name="loginUsuario" placeholder="a">
             <label for="" class="label">usuario / email</label>
           </div>
     
           <div class="inputContainer">
-            <input type="password" class="input" name="loginPassword" placeholder="a">
+            <input type="password" class="input" id="loginPassword" loginPassword name="loginPassword" placeholder="a">
             <label for="" class="label">Password</label>
           </div>
           <a href="./registro.html">Registrarse</a>
@@ -203,7 +203,7 @@
     <!-- 
       - #END FOOTER
     -->
-    <script src="./js/script.js" type="application/javascript"></script>
+    <script src="./js/login.js" type="application/javascript"></script>
 </body>
 
 
