@@ -1,5 +1,6 @@
 const mensajeAlerta = "Por favor, completar todos los campos obligatorios"
 const confirmaMsg = "Se borraran todos los campos"  
+const apiUrl = "http://localhost:3000"
 
 document.addEventListener("DOMContentLoaded", () => {
     const formPaseadores = document.querySelector("#solicitar-paseo-form")
@@ -60,8 +61,11 @@ const validarClave = () => {
   
 const enviarFormularioPaseadores = () => {
     const datos = new FormData(formPaseadores);
-    fetch("http://localhost:3000/procesar_solicitud", {
+    fetch(`${apiUrl}/procesar_solicitud`, {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: datos
     })
     .then(respuesta => respuesta.json())

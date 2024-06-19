@@ -1,5 +1,7 @@
 const mensajeAlerta = "Por favor, completar todos los campos obligatorios"
 const confirmaMsg = "Se borraran todos los campos"
+const apiUrl = "http://localhost:3000"
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const formRegistro = document.querySelector("#registro-form")
@@ -92,8 +94,11 @@ const validarusuarioEmail = () => {
   const enviarFormularioRegistro = () => {
     const datos = new FormData(formRegistro);
     console.log(datos);
-    fetch("http://localhost:3000/registro-form", {
+    fetch(`${apiUrl}/registro-form"`, {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: datos
     })
     .then(respuesta => respuesta.json())

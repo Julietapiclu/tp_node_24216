@@ -1,5 +1,6 @@
 const mensajeAlerta = "Por favor, completar todos los campos obligatorios"
 const confirmaMsg = "Se borraran todos los campos"
+const apiUrl = "http://localhost:3000"
 
 document.addEventListener("DOMContentLoaded", () => {
   const formContacto = document.querySelector("#contact-form")
@@ -76,17 +77,16 @@ const validarFormContacto = (evento) => {
     }
 }
 
-
-
-
-
-
 /*-----------------------ENVIO FORMULARIO CONTACTO -------------------------------*/
 
 const enviarFormularioContacto = () => {
   const datos = new FormData(formContacto);
-  fetch("http://localhost:3000/contacto-form", {
+  fetch(`${apiUrl}/contacto-form`, {
     method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+      
     body: datos
   })
   .then(respuesta => respuesta.json())
