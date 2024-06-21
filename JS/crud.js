@@ -41,57 +41,81 @@ const buscarUsuario = async (id) => {
     }
 
     const datosUsuario = await response.json();
-    console.log("Datos del usuario:", datosUsuario);
-    // Procesa los datos del usuario según sea necesario
+    console.log("Datos del usuario:", datosUsuario, datosUsuario.nombre, datosUsuario.apellido, datosUsuario.usuario);
+    llenarFormulario(datosUsuario)
+    // Procesar los datos del usuario 
   } catch (error) {
     console.error("Error al buscar el usuario:", error);
-    // Maneja el error adecuadamente
+  
   }
 };
 
+const llenarFormulario = (datosUsuario) => {
+  document.querySelector("#userEmail").value = datosUsuario.usuario;
+  document.querySelector("#userName").value = datosUsuario.nombre;
+  document.querySelector("#userSurname").value = datosUsuario.apellido;
+  document.querySelector("#userPhone").value = datosUsuario.telefono;
+}
+
+
 const actualizarUsuario = async (id) => {
-  // Ejemplo de datos de actualización
+  // Obtener los datos del formulario
+  const nombre = document.querySelector("#userName").value;
+  const email = document.querySelector("#userEmail").value;
+  const apellido = document.querySelector("#userSurname").value;
+  const telefono = document.querySelector("#userPhone").value;
+
+  // Crear el objeto de datos de actualización
   const datosActualizacion = {
-    nombre: "Nuevo Nombre",
-    email: "nuevoemail@example.com"
+      nombre: nombre,
+      email: email,
+      apellido: apellido,
+      telefono: telefono
   };
 
   try {
-    const response = await fetch(`${apiUrlCrud}/registro-form/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(datosActualizacion)
-    });
+      const response = await fetch(`${apiUrlCrud}/registro-form/${id}`, {
+          method: "PUT",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(datosActualizacion)
+      });
 
-    if (!response.ok) {
-      throw new Error(`Error en la solicitud: ${response.statusText}`);
-    }
+      if (!response.ok) {
+          throw new Error(`Error en la solicitud: ${response.statusText}`);
+      }
 
-    const datosActualizados = await response.json();
-    console.log("Usuario actualizado:", datosActualizados);
-    // Procesa los datos de actualización según sea necesario
+      const datosActualizados = await response.json();
+      console.log("Usuario actualizado:", datosActualizados);
+      alert("Usuario actualizado correctamente.");
+
+      // Opcional: Actualizar el formulario con los nuevos datos
+      // llenarFormulario(datosActualizados);
+
   } catch (error) {
-    console.error("Error al actualizar el usuario:", error);
-    // Maneja el error adecuadamente
+      console.error("Error al actualizar el usuario:", error);
+      alert("Error al actualizar el usuario. Consulta la consola para más detalles.");
   }
 };
 
 const eliminarUsuario = async (id) => {
   try {
-    const response = await fetch(`${apiUrlCrud}/registro-form/${id}`, {
-      method: "DELETE"
-    });
+      const response = await fetch(`${apiUrlCrud}/registro-form/${id}`, {
+          method: "DELETE"
+      });
 
-    if (!response.ok) {
-      throw new Error(`Error en la solicitud: ${response.statusText}`);
-    }
+      if (!response.ok) {
+          throw new Error(`Error en la solicitud: ${response.statusText}`);
+      }
 
-    console.log("Usuario eliminado exitosamente");
-    // Procesa la eliminación según sea necesario
+      console.log("Usuario eliminado correctamente.");
+      alert("Usuario eliminado correctamente.");
+
+      // Opcional: Puedes realizar acciones adicionales después de eliminar el usuario
+
   } catch (error) {
-    console.error("Error al eliminar el usuario:", error);
-    // Maneja el error adecuadamente
+      console.error("Error al eliminar el usuario:", error);
+      alert("Error al eliminar el usuario. Consulta la consola para más detalles.");
   }
 };

@@ -2,10 +2,11 @@ const mensajeAlerta = "Por favor, completar todos los campos obligatorios"
 const confirmaMsg = "Se borraran todos los campos"
 const apiUrl = "http://localhost:3000"
 
+let formRegistro;
 
 document.addEventListener("DOMContentLoaded", () => {
-    const formRegistro = document.querySelector("#registro-form")
-    formRegistro.addEventListener("submit", validarYEnviarFormRegistro);
+    formRegistro = document.querySelector("#registro-form")
+    formRegistro.addEventListener("submit", validarFormRegistro);
     //formRegistro.addEventListener("submit", enviarFormularioRegistro);
     formRegistro.addEventListener("reset", confirmar)
   });
@@ -76,11 +77,14 @@ const validarusuarioEmail = () => {
     }
   
   
-  const validarYEnviarFormRegistro = (evento) => {
+  const validarFormRegistro = (evento) => {
+    
     if (validarusuarioEmail() && validarNombreRegistro() && validarApellidoRegistro()
         && validarTelefonoRegistro() && validarPasswordRegistro()) {
           enviarFormularioRegistro();
-      } 
+      } else {
+        evento.preventDefault()
+      }
   }
   
   
@@ -90,7 +94,7 @@ const validarusuarioEmail = () => {
   const enviarFormularioRegistro = () => {
     const datos = new FormData(formRegistro);
 
-    fetch(`${apiUrl}/registro-form"`, {
+    fetch(`${apiUrl}/registro-form`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -99,7 +103,7 @@ const validarusuarioEmail = () => {
     })
     .then(respuesta => {respuesta.json() })
 
-    .then(data => {console.log(data.data) })
+    .then(data => {console.log(data) })
     .catch(error => console.log("error", error));
 
   };

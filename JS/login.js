@@ -45,7 +45,7 @@ const validarUsuarioLogin = () => {
   }
 
   const login = () => {
-    fetch(`${apiUrl}/login-form`, options )
+    fetch(`${apiUrl}/login-form`, options)
     .then(response =>  response.json()) 
     .then(result => console.log(result))
     .catch(error => console.log("error", error));

@@ -56,8 +56,8 @@
               <a class="nav-link" href="login.html">Log in</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 buscadorInput" type="search" aria-label="Search">
+          <form class="d-flex" role="search" id="search">
+            <input class="form-control me-2 buscadorInput" type="search" aria-label="Search" name="search">
             <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
         </div>
@@ -83,22 +83,22 @@
         </div>
 
         <div class="inputContainer">
-          <input type="text" id="userEmail" class="input" name="email" placeholder="Email">
+          <input type="text" id="userEmail" class="input" name="email" placeholder="Email" autocomplete="off">
           <label for="userEmail" class="label">Email</label>
         </div>
   
         <div class="inputContainer">
-          <input type="text" id="userName" class="input" name="name" placeholder="Nombre">
+          <input type="text" id="userName" class="input" name="name" placeholder="Nombre" autocomplete="off">
           <label for="userName" class="label">Nombre</label>
         </div>
   
         <div class="inputContainer">
-          <input type="text" id="userSurname" class="input" name="surname" placeholder="Apellido">
+          <input type="text" id="userSurname" class="input" name="surname" placeholder="Apellido", autocomplete="off">
           <label for="userSurname" class="label">Apellido</label>
         </div>
   
         <div class="inputContainer">
-          <input type="text" id="userPhone" class="input" name="phone" placeholder="Teléfono">
+          <input type="text" id="userPhone" class="input" name="phone" placeholder="Teléfono" autocomplete="off">
           <label for="userPhone" class="label">Teléfono</label>
         </div>
   
@@ -109,26 +109,8 @@
 
       </form>
   
-      <!-- Lista de Usuarios -->
-      <div class="userList">
-        <h3>Lista de Usuarios</h3>
-        <table id="userTable">
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Teléfono</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Aquí se agregarán las filas de usuarios -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <script src="./js/crud.js"></script>
+    </div> 
+    
       
     </form>
   </div>
@@ -250,7 +232,8 @@
     <!-- 
       - #END FOOTER
     -->
-    <script src="./js/registroUsuario.js"></script>
+    <script src="./js/crud.js"></script>
+    
 </body>
 
 

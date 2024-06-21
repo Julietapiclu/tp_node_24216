@@ -57,8 +57,8 @@
               <a class="nav-link" href="login.html">Log in</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 buscadorInput" type="search" aria-label="Search">
+          <form class="d-flex" role="search" id="search">
+            <input class="form-control me-2 buscadorInput" type="search" aria-label="Search" name="search">
             <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
         </div>
@@ -77,12 +77,12 @@
     
           <div class="inputContainer">
             <input type="text" class="input" id="loginUsuario" name="usuario" placeholder="a"><!--  loginUsuario -loginPassword -->
-            <label for="" class="label">usuario / email</label>
+            <label for="loginUsuario" class="label">usuario / email</label>
           </div>
     
           <div class="inputContainer">
             <input type="password" class="input" id="loginPassword" loginPassword name="password" placeholder="a">
-            <label for="" class="label">Password</label>
+            <label for="loginPassword" class="label">Password</label>
           </div>
           <a href="./registro.html">Registrarse</a>
           <input type="submit" class="submitBtn" value="Iniciar sesion">

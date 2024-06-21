@@ -56,8 +56,8 @@
               <a class="nav-link" href="login.html">Log in</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 buscadorInput" type="search" aria-label="Search">
+          <form class="d-flex" role="search" id="search">
+            <input class="form-control me-2 buscadorInput" type="search" aria-label="Search" name="search">
             <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
         </div>
@@ -77,32 +77,32 @@
 
       <div class="inputContainer">
         <input type="text" id ="usuarioEmail" class="input" name ="usuario" placeholder="a">
-        <label for="" class="label">usuario: ingrese su email</label>
+        <label for="usuarioEmail" class="label">usuario: ingrese su email</label>
       </div>
 
       <div class="inputContainer">
         <input type="text" id="nombreRegistro" class="input" name="nombre" placeholder="a">
-        <label for=""  class="label">Nombre</label>
+        <label for="nombreRegistro"  class="label">Nombre</label>
       </div>
 
       <div class="inputContainer">
         <input type="text" id="apellidoRegistro" class="input" name="apellido" placeholder="a">
-        <label for="" class="label">Apellido</label>
+        <label for="apellidoRegistro" class="label">Apellido</label>
       </div>
 
       <div class="inputContainer">
         <input type="text" id="telefonoRegistro" class="input" name="telefono" placeholder="a">
-        <label for=""  class="label">Telefono</label>
+        <label for="telefonoRegistro"  class="label">Telefono</label>
       </div>
 
       <div class="inputContainer">
         <input type="password" id="passwordRegistro" class="input" name ="password" placeholder="a">
-        <label for=""  class="label">Password</label>
+        <label for="passwordRegistro"  class="label">Password</label>
       </div>
 
       <div class="inputContainer">
         <input type="password" id="confirmPpasswordRegistro" class="input" name="confirmPpassword" placeholder="a">
-        <label for=""  class="label">Confirmar Password</label>
+        <label for="confirmPpasswordRegistro"  class="label">Confirmar Password</label>
       </div>
       <a href="./login.html">Tenes usuario?</a>
       <input type="submit" class="submitBtn" value="Enviar">
