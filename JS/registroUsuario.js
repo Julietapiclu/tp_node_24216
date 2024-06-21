@@ -5,8 +5,8 @@ const apiUrl = "http://localhost:3000"
 
 document.addEventListener("DOMContentLoaded", () => {
     const formRegistro = document.querySelector("#registro-form")
-    formRegistro.addEventListener("submit", validarFormRegistro);
-    formRegistro.addEventListener("submit", enviarFormularioRegistro);
+    formRegistro.addEventListener("submit", validarYEnviarFormRegistro);
+    //formRegistro.addEventListener("submit", enviarFormularioRegistro);
     formRegistro.addEventListener("reset", confirmar)
   });
 
@@ -76,34 +76,32 @@ const validarusuarioEmail = () => {
     }
   
   
-  const validarFormRegistro = (evento) => {
+  const validarYEnviarFormRegistro = (evento) => {
     if (validarusuarioEmail() && validarNombreRegistro() && validarApellidoRegistro()
         && validarTelefonoRegistro() && validarPasswordRegistro()) {
-          return true;
-      } else {
-        evento.preventDefault();
-        return false;
-      }
+          enviarFormularioRegistro();
+      } 
   }
   
   
   /*-----------------------ENVIO FORMULARIO REGISTRO -------------------------------*/
   
-  
-  
+    
   const enviarFormularioRegistro = () => {
     const datos = new FormData(formRegistro);
-    console.log(datos);
+
     fetch(`${apiUrl}/registro-form"`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: datos
+      body: JSON.stringify(datos)
     })
-    .then(respuesta => respuesta.json())
-    .then(respuesta => {
-    }).catch(error => console.log("error", error));
+    .then(respuesta => {respuesta.json() })
+
+    .then(data => {console.log(data.data) })
+    .catch(error => console.log("error", error));
+
   };
   
   

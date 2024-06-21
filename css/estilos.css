@@ -376,6 +376,18 @@ a[href^="mailto:"] {
   height: 100vh;
 }
 
+
+
+.crudFrm {
+  display:grid;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
+
+
 .form {
   background-color: white;
   width: 400px;
@@ -450,6 +462,25 @@ a[href^="mailto:"] {
   background-color: #058787;
   transform: translateY(-2px);
 }
+
+.submitBtnCrud {
+  display: inline;
+  margin-left: auto;
+  padding: 15px 20px;
+  border: none;
+  background-color: #10BBBC;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 30px;
+}
+
+.submitBtnCrud:hover {
+  background-color: #058787;
+  transform: translateY(-2px);
+}
+
 
 .input:focus + .label {
   top: -7px;
