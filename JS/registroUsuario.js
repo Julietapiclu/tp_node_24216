@@ -1,13 +1,11 @@
 const mensajeAlerta = "Por favor, completar todos los campos obligatorios"
 const confirmaMsg = "Se borraran todos los campos"
-const apiUrl = "http://localhost:3000"
 
 let formRegistro;
 
 document.addEventListener("DOMContentLoaded", () => {
     formRegistro = document.querySelector("#registro-form")
     formRegistro.addEventListener("submit", validarFormRegistro);
-    //formRegistro.addEventListener("submit", enviarFormularioRegistro);
     formRegistro.addEventListener("reset", confirmar)
   });
 
@@ -81,7 +79,7 @@ const validarusuarioEmail = () => {
     
     if (validarusuarioEmail() && validarNombreRegistro() && validarApellidoRegistro()
         && validarTelefonoRegistro() && validarPasswordRegistro()) {
-          enviarFormularioRegistro();
+          //enviarFormularioRegistro();
       } else {
         evento.preventDefault()
       }
@@ -90,24 +88,26 @@ const validarusuarioEmail = () => {
   
   /*-----------------------ENVIO FORMULARIO REGISTRO -------------------------------*/
   
-    
+/*     
   const enviarFormularioRegistro = () => {
     const datos = new FormData(formRegistro);
-
-    fetch(`${apiUrl}/registro-form`, {
+    const actionURL = formRegistro.getAttribute('action'); // Obtiene la url del formulario html 
+    const options = {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(datos)
-    })
+    }
+    
+    fetch(actionURL, options)
     .then(respuesta => {respuesta.json() })
 
     .then(data => {console.log(data) })
     .catch(error => console.log("error", error));
 
   };
-  
+   */
   
 
   

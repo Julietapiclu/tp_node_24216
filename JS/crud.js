@@ -1,4 +1,4 @@
-const apiUrlCrud = "http://localhost:3000";
+const apiUrlCrud = "http://localhost:3300";
 
 document.addEventListener("DOMContentLoaded", () => {
   const formCrud = document.querySelector("#user-form");
