@@ -1,7 +1,8 @@
-const apiUrlCrud = "http://localhost:3300";
+import { SERVER_URL } from './config.js';
+const formCrud = document.querySelector("#user-form");
 
 document.addEventListener("DOMContentLoaded", () => {
-  const formCrud = document.querySelector("#user-form");
+  
   const buscarBtn = document.querySelector("#buscar");
   const actualizarBtn = document.querySelector("#actualizar");
   const eliminarBtn = document.querySelector("#eliminar");
@@ -29,7 +30,7 @@ const handleFormSubmit = async (action) => {
 
 const buscarUsuario = async (id) => {
   try {
-    const response = await fetch(`${apiUrlCrud}/registro-form/${id}`, {
+    const response = await fetch(`${SERVER_URL}/registro-form/${id}`, {
       method: "GET",
       headers: {
         "Accept": "application/json"
@@ -74,7 +75,7 @@ const actualizarUsuario = async (id) => {
   };
 
   try {
-      const response = await fetch(`${apiUrlCrud}/registro-form/${id}`, {
+      const response = await fetch(`${SERVER_URL}/registro-form/${id}`, {
           method: "PUT",
           headers: {
               "Content-Type": "application/json"
@@ -89,6 +90,8 @@ const actualizarUsuario = async (id) => {
       const datosActualizados = await response.json();
       console.log("Usuario actualizado:", datosActualizados);
       alert("Usuario actualizado correctamente.");
+      formCrud.reset(); 
+      
 
       // Opcional: Actualizar el formulario con los nuevos datos
       // llenarFormulario(datosActualizados);
@@ -101,7 +104,7 @@ const actualizarUsuario = async (id) => {
 
 const eliminarUsuario = async (id) => {
   try {
-      const response = await fetch(`${apiUrlCrud}/registro-form/${id}`, {
+      const response = await fetch(`${SERVER_URL}/registro-form/${id}`, {
           method: "DELETE"
       });
 
@@ -111,6 +114,7 @@ const eliminarUsuario = async (id) => {
 
       console.log("Usuario eliminado correctamente.");
       alert("Usuario eliminado correctamente.");
+      formCrud.reset();
 
       // Opcional: Puedes realizar acciones adicionales después de eliminar el usuario
 

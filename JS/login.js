@@ -1,16 +1,6 @@
+import { SERVER_URL } from './config.js';
+
 const mensajeAlerta = "Por favor, completar todos los campos obligatorios";
-const confirmaMsg = "Se borrarán todos los campos";
-
-let formLogin;
-
-document.addEventListener("DOMContentLoaded", () => {
-  formLogin = document.querySelector("#login-form");
-  formLogin.addEventListener("submit", validarFormLogin);
-  
-});
-
-
-
 
 /*-----------------VALIDACIONES DE CAMPOS INPUT EN FORMULARIO LOGIN ------------- */
 
@@ -36,41 +26,56 @@ const validarPasswordLogin = () => {
   }
 };
 
+const validarFormLogin = () => {
+  return validarUsuarioLogin() && validarPasswordLogin();
+};
+
+
 /*-----------------------ENVÍO FORMULARIO LOGIN -------------------------------*/
 
 
-const validarFormLogin = (evento) => {
+document.addEventListener("DOMContentLoaded", () => {
+  const formLogin = document.querySelector("#login-form");
 
-  if (validarUsuarioLogin() && validarPasswordLogin()) {
-    //login();
-  } else {
-    evento.preventDefault()
-  } 
-};
+  formLogin.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-//da error de bad reques - se envía con el formulario html
-/*   const login = () => {
-  const datos = new FormData(formLogin);
-  const actionURL = formLogin.getAttribute('action'); // Obtiene la URL del formulario HTML   
-  
-  const options = {
-    method: "POST",
-    body: datos
-  }
-
-  console.log("Datos :", datos);
-  const formDataObject = Object.fromEntries(datos);
-  console.log(formDataObject);
-
-  fetch(actionURL, options)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+    if (!validarFormLogin()) {
+      return; // No enviar si no es válido
     }
-    return response.json();
-  })
-    .then(data => console.log(data))
-    .catch(error => console.log("Error:", error)
-    );
-}; 
-  */
+
+    const usuario = formLogin.querySelector('#loginUsuario').value;
+    const password = formLogin.querySelector('#loginPassword').value;
+
+    const datos = {
+      usuario: usuario,
+      password: password
+    };
+
+    console.log(datos);
+
+    try {
+      const respuesta = await fetch(`${SERVER_URL}/login-form`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      });
+
+      if (respuesta.ok) {
+        const data = await respuesta.json();
+        console.log('Formulario enviado correctamente:', data);
+
+        document.getElementById('contenido').innerText = 'Login exitoso';
+        window.location.href = data.redirectUrl;
+      } else {
+        console.error('Error al enviar el formulario');
+        document.getElementById('contenido').innerText = 'Error en el envío del formulario';
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      document.getElementById('contenido').innerText = 'Hubo un error en el login';
+    }
+  });
+});

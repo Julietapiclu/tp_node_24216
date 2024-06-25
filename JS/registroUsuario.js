@@ -1,28 +1,11 @@
+import { SERVER_URL } from './config.js';
 const mensajeAlerta = "Por favor, completar todos los campos obligatorios"
 const confirmaMsg = "Se borraran todos los campos"
-
-let formRegistro;
-
-document.addEventListener("DOMContentLoaded", () => {
-    formRegistro = document.querySelector("#registro-form")
-    formRegistro.addEventListener("submit", validarFormRegistro);
-    formRegistro.addEventListener("reset", confirmar)
-  });
-
-/* --------boton borrar----*/
-const confirmar = (evento) => {
-    const confirma = confirm(confirmaMsg);
-    if (!confirma) {
-      evento.preventDefault();
-      return;
-    } 
-  }
-
 
 
 /*-----------------VALIDACIONES DE CAMPOS INPUT EN FORMULARIO REGISTRO ------------- */
 
-const validarusuarioEmail = () => {
+const validarUsuarioEmail = () => {
     let elemento = document.querySelector("#usuarioEmail").value.trim();
     let validarEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
     if( validarEmail.test(elemento) ){
@@ -74,40 +57,71 @@ const validarusuarioEmail = () => {
      }
     }
   
-  
-  const validarFormRegistro = (evento) => {
+    const validarFormRegistro = () => {
+      return (
+        validarUsuarioEmail() &&
+        validarNombreRegistro() &&
+        validarApellidoRegistro() &&
+        validarTelefonoRegistro() &&
+        validarPasswordRegistro()
+      );
+    };
     
-    if (validarusuarioEmail() && validarNombreRegistro() && validarApellidoRegistro()
-        && validarTelefonoRegistro() && validarPasswordRegistro()) {
-          //enviarFormularioRegistro();
-      } else {
-        evento.preventDefault()
-      }
-  }
-  
   
   /*-----------------------ENVIO FORMULARIO REGISTRO -------------------------------*/
+
   
-/*     
-  const enviarFormularioRegistro = () => {
-    const datos = new FormData(formRegistro);
-    const actionURL = formRegistro.getAttribute('action'); // Obtiene la url del formulario html 
-    const options = {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(datos)
+document.addEventListener("DOMContentLoaded", () => {
+  const formRegistro = document.querySelector("#registro-form")
+  
+  formRegistro.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!validarFormRegistro()) {
+      return; // No enviar si no es válido
     }
-    
-    fetch(actionURL, options)
-    .then(respuesta => {respuesta.json() })
 
-    .then(data => {console.log(data) })
-    .catch(error => console.log("error", error));
+    const usuario = formRegistro.querySelector('#usuarioEmail').value;
+    const nombre = formRegistro.querySelector('#nombreRegistro').value;
+    const apellido = formRegistro.querySelector('#apellidoRegistro').value;
+    const telefono = formRegistro.querySelector('#telefonoRegistro').value;
+    const password = formRegistro.querySelector('#passwordRegistro').value;
 
-  };
-   */
+    const datos = {
+      usuario: usuario,
+      nombre: nombre,
+      apellido: apellido,
+      telefono: telefono,
+      password: password
+    };
+    try {
+      const respuesta = await fetch(`${SERVER_URL}/registro-form`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      });
+
+      if (respuesta.ok) {
+        const data = await respuesta.json();
+        console.log('Formulario enviado correctamente:', data);
+        alert('Formulario enviado correctamente:')
+        formRegistro.reset();
+        
+      } else {
+        console.error('Error al enviar el formulario');
+        alert('Error al enviar el formulario');
+        
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error:', error);
+    }
+
+  });
+});
+
+
   
 
-  
+
