@@ -52,8 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
       password: password
     };
 
-    console.log(datos);
-
     try {
       const respuesta = await fetch(`${SERVER_URL}/login-form`, {
         method: 'POST',
@@ -63,19 +61,24 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(datos)
       });
 
+      const data = await respuesta.json();
       if (respuesta.ok) {
-        const data = await respuesta.json();
-        console.log('Formulario enviado correctamente:', data);
-
-        document.getElementById('contenido').innerText = 'Login exitoso';
-        window.location.href = data.redirectUrl;
+        //const data = await respuesta.json();
+        
+        console.log(`Datos recibidos del servidor: Status = ${respuesta.status} ${data.message}, ${data.redirectUrl} ${data.message}`);
+        alert(data.message)
+        window.location.href = 'http://localhost:5500/crud.html'
+              
+        ;
       } else {
-        console.error('Error al enviar el formulario');
-        document.getElementById('contenido').innerText = 'Error en el envío del formulario';
+        console.error(`Error al enviar el formulario, Status:  ${respuesta.status} ${data.message}`);
+        alert(`Error: ${data.message}`)
+        
       }
     } catch (error) {
       console.error('Error:', error);
-      document.getElementById('contenido').innerText = 'Hubo un error en el login';
+      alert('Error:', data.message)
+      
     }
   });
 });

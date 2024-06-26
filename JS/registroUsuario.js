@@ -105,12 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (respuesta.ok) {
         const data = await respuesta.json();
         console.log('Formulario enviado correctamente:', data);
-        alert('Formulario enviado correctamente:')
+        alert(data.message)
         formRegistro.reset();
         
       } else {
         console.error('Error al enviar el formulario');
-        alert('Error al enviar el formulario');
+        alert('Error al enviar el formulario', data.message);
         
       }
     } catch (error) {
